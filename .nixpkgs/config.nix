@@ -13,6 +13,7 @@
         tor-browser-bundle-bin
 
         # Develpoment tools
+        binutils
         dos2unix
         git
         gnumake
@@ -26,6 +27,10 @@
 #        haskellPackages.hsdev
         haskellPackages.stylish-haskell
         stack
+
+        # Purescript
+        purescript
+        psc-package
 
         # Rust
         rustup
