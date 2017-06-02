@@ -77,15 +77,19 @@
     displayManager.sddm.enable = true;
     desktopManager.plasma5.enable = true;
 
-    synaptics.enable = true;
-    synaptics.twoFingerScroll = true;
-    synaptics.maxSpeed = "1.5";
-    synaptics.accelFactor = "0.01";
+    libinput = {
+      enable = true;
+    };
 
-    synaptics.additionalOptions = ''
-      Option "VertScrollDelta" "-100"
-      Option "HorizScrollDelta" "-100"
-    '';
+#   synaptics.enable = true;
+#   synaptics.twoFingerScroll = true;
+#   synaptics.maxSpeed = "1.5";
+#   synaptics.accelFactor = "0.01";
+
+#   synaptics.additionalOptions = ''
+#     Option "VertScrollDelta" "-100"
+#     Option "HorizScrollDelta" "-100"
+#   '';
 
     dpi = 144;
   };
