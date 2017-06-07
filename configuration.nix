@@ -48,11 +48,9 @@
   environment.systemPackages = with pkgs; [
     htop
     neovim
-    nox
+    plasma-pa
     wget
   ];
-
-  sound.mediaKeys.enable = true;
 
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
@@ -64,8 +62,18 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  hardware.bluetooth.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Sound
+  hardware.pulseaudio.enable = true;
+  sound.mediaKeys.enable = true;
+  
+  # Settings needed for steam
+  hardware.opengl.driSupport32Bit = true;
+  hardware.pulseaudio.support32Bit = true;
 
   # Enable the X11 windowing system.
   services.xserver = {
@@ -80,16 +88,6 @@
     libinput = {
       enable = true;
     };
-
-#   synaptics.enable = true;
-#   synaptics.twoFingerScroll = true;
-#   synaptics.maxSpeed = "1.5";
-#   synaptics.accelFactor = "0.01";
-
-#   synaptics.additionalOptions = ''
-#     Option "VertScrollDelta" "-100"
-#     Option "HorizScrollDelta" "-100"
-#   '';
 
     dpi = 144;
   };
