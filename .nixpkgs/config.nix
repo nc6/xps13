@@ -15,10 +15,14 @@
         # Develpoment tools
         binutils
         dos2unix
+        gcc
         git
         gnumake
         sublime3
         zeal
+        
+        # Games
+        steam
 
         # Haskell Packages
         ghc
@@ -33,7 +37,7 @@
         psc-package
 
         # Rust
-        rustup
+        rustChannels.nightly.rust
 
         # System
         htop
