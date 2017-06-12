@@ -1,14 +1,14 @@
 # ~/.nixpkgs/config.nix
-
+{ pkgs }:
 {
   allowUnfree = true;
-  
-  packageOverrides = pkgs_: with pkgs_; {  # pkgs_ is the original set of packages
-    all = with pkgs; buildEnv {  # pkgs is your overriden set of packages itself
+
+  packageOverrides = self: rec {
+    all = with self; buildEnv {
       name = "all";
       paths = [
         # Web stuff
-        chromium
+        google-chrome
         slack
         tor-browser-bundle-bin
 
@@ -18,9 +18,9 @@
         gcc
         git
         gnumake
-        sublime3
+        sublime3-dev
         zeal
-        
+
         # Games
         steam
 
@@ -37,12 +37,11 @@
         psc-package
 
         # Rust
-        rustChannels.nightly.rust
+        pkgs.rustChannels.nightly.rust
 
         # System
         htop
         mosh
-        nox
         p7zip
         tmate
         tmux
