@@ -9,6 +9,7 @@
       paths = [
         # Web stuff
         google-chrome
+        google-play-music-desktop-player
         slack
         tor-browser-bundle-bin
 
@@ -18,6 +19,7 @@
         gcc
         git
         gnumake
+        gitAndTools.hub
         sublime3-dev
         zeal
 
@@ -36,8 +38,11 @@
         purescript
         psc-package
 
+        # R
+        R
+
         # Rust
-        pkgs.rustChannels.nightly.rust
+        pkgs.rustChannels.beta.rust
 
         # System
         htop
