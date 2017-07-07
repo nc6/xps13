@@ -28,6 +28,7 @@
 
   networking.hostName = "varda"; # Define your hostname.
   networking.networkmanager.enable = true;
+  networking.networkmanager.unmanaged = [ "interface-name:ve-*" ];
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -65,7 +66,16 @@
   hardware.bluetooth.enable = true;
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.epson-escpr ];
+  };
+
+  # Needed to support wireless printing
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
 
   # Sound
   hardware.pulseaudio.enable = true;
@@ -92,13 +102,35 @@
     dpi = 144;
   };
 
+  # Docker
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
+
+  containers = {
+    tor = {
+      config = 
+        {config,pkgs,...}:
+	{ services.tor.enable = true; };
+    };
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.nc = {
     description = "Nicholas Clarke";
     isNormalUser = true;
     uid = 1000;
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel" "networkmanager" "docker"];
   };
+
+  nix.binaryCaches = [
+    "https://cache.nixos.org"
+    "https://storage.googleapis.com/as-binary-cache-654123"
+  ];
+  nix.binaryCachePublicKeys = [
+    "cache.alphasheets.com-1:ZAhUSf/cXThGuQE2oQjsRwE4V1G45F1MeoMQ0XZTGHs="
+  ];
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "17.03";

@@ -8,14 +8,14 @@
       name = "all";
       paths = [
         # Web stuff
+        firefoxPackages.tor-browser
         google-chrome
         google-play-music-desktop-player
+        konversation
         slack
-        tor-browser-bundle-bin
 
         # Develpoment tools
         binutils
-        dos2unix
         gcc
         git
         gnumake
@@ -46,6 +46,8 @@
 
         # System
         htop
+        gnupg
+        kgpg
         mosh
         p7zip
         tmate
