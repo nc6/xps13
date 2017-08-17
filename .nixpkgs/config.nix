@@ -4,6 +4,13 @@
   allowUnfree = true;
 
   packageOverrides = self: rec {
+
+    haskellPackages = self.haskellPackages.override {
+      overrides = hsSelf: hsSuper: {
+        numhask = hsSelf.callPackage /home/nc/proj/numhask {};
+      };
+    };
+
     all = with self; buildEnv {
       name = "all";
       paths = [
@@ -12,6 +19,7 @@
         google-chrome
         google-play-music-desktop-player
         konversation
+        opera
         slack
 
         # Develpoment tools
@@ -34,8 +42,11 @@
         haskellPackages.stylish-haskell
         stack
 
+        # Nix tools
+        nix-repl
+
         # Purescript
-        purescript
+#       purescript
         psc-package
 
         # R
@@ -47,9 +58,11 @@
         # System
         htop
         gnupg
+        gwenview
         kgpg
         mosh
         p7zip
+        remmina
         tmate
         tmux
       ];
